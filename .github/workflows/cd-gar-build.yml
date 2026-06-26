@@ -76,34 +76,6 @@ jobs:
           mkdir -p dist/bin/amd64
           cp target/x86_64-unknown-linux-gnu/release/rundler dist/bin/amd64/rundler
 
-      - name: Validate GAR configuration
-        env:
-          GCP_REGION: ${{ vars.GCP_REGION }}
-          GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
-          GCP_GAR_REPOSITORY: ${{ vars.GCP_GAR_REPOSITORY }}
-          GCP_GAR_PACKAGE: ${{ vars.GCP_GAR_PACKAGE }}
-          GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-          GCP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
-        run: |
-          missing=()
-          for name in \
-            GCP_REGION \
-            GCP_PROJECT_ID \
-            GCP_GAR_REPOSITORY \
-            GCP_GAR_PACKAGE \
-            GCP_SERVICE_ACCOUNT \
-            GCP_WORKLOAD_IDENTITY_PROVIDER
-          do
-            if [[ -z "${!name}" ]]; then
-              missing+=("$name")
-            fi
-          done
-
-          if [[ "${#missing[@]}" -gt 0 ]]; then
-            echo "Missing required GitHub Actions variables/secrets: ${missing[*]}" >&2
-            exit 1
-          fi
-
       - uses: google-github-actions/auth@v3
         id: auth
         with:
