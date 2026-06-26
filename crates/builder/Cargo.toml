@@ -21,7 +21,7 @@ async-trait.workspace = true
 enum_dispatch = "0.3.13"
 futures.workspace = true
 futures-util.workspace = true
-jsonrpsee = { workspace = true, features = [ "http-client" ] }
+jsonrpsee = { workspace = true, features = ["http-client"] }
 linked-hash-map = "0.5.6"
 metrics.workspace = true
 metrics-derive.workspace = true
@@ -45,12 +45,12 @@ tonic-health.workspace = true
 tonic-reflection.workspace = true
 tracing.workspace = true
 
+[build-dependencies]
+tonic-build.workspace = true
+
 [dev-dependencies]
 alloy-rpc-types-eth.workspace = true
 mockall.workspace = true
 rundler-provider = { workspace = true, features = ["test-utils"] }
 rundler-sim = { workspace = true, features = ["test-utils"] }
 rundler-types = { workspace = true, features = ["test-utils"] }
-
-[build-dependencies]
-tonic-build.workspace = true
