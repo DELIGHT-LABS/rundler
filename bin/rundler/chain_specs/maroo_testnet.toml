@@ -1,0 +1,15 @@
+# maroo testnet node
+#
+# Derived from `eth_chainId` = 0x40000 (450815).
+base = "ethereum"
+
+name = "maroo testnet"
+id = 450815
+
+# Local dev nodes typically don't use Flashbots/bloxroute.
+flashbots_enabled = false
+
+chain_history_size = 2
+
+eip7702_enabled = true
+eip7623_enabled = false
